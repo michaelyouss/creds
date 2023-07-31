@@ -3,6 +3,7 @@ var productNameInpot = document.getElementById("productName");
 var productPriceInpot = document.getElementById("productPrice");
 var CategaryInpot = document.getElementById("productCategary");
 var productDescriptionInpot = document.getElementById("productDescription");
+var search = document.getElementById("searchInpot")
 // 
 // ================================= creat
 // بستخدمها للتخذين من object ال array
@@ -61,8 +62,37 @@ function deleteProduct(elementNumber )
 
     displayData()
 }
+// ============================== search===========================
+//  displayData للبحث عن اي شيئ موجود داخل ال
+function searchProdeuct(){
+    var seaarch= search.value;
 
+    var cartone = "";
+    for(var i = 0; i < prodeuctcontiner.length; i++){
+// لعمل البحث
+if( prodeuctcontiner[i].name.toLowerCase().includes(seaarch.toLowerCase())   ){
 
+    cartone += `  
+    <tr>
+        <td>${prodeuctcontiner[i].name}</td>
+        <td>${prodeuctcontiner[i].price}</td>
+        <td>${prodeuctcontiner[i].categary}</td>
+        <td>${prodeuctcontiner[i].description}</td>
+            <td>
+            <button class="btn btn-outline-warning btn-sm" onclick="">Update</button>
+            <button class="btn btn-outline-danger btn-sm mt-1 mt-lg-0"  onclick="deleteProduct(${i})" >Delete</button>
+            </td>
+    </tr>`
+}
+
+    }
+// لاظهار الداتا التي تم جمعها
+    document.getElementById("tbodyData").innerHTML = cartone;
+
+}
+
+    var seaarch = search.value;
+ // المكان الموجود لجم البيانات بداخله
 
 
 
