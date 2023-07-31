@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/all.css">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>crud</title>
+</head>
+<main class=" container-fluid mx-auto">
+    <h2 class="text-center py-2">hello my Friend</h2>
+    <section class="bg-info  p-3">
+
+        <!-- 1 -->
+        <div class="inputs-form my-2">
+            <label for="productName">productName :</label>
+            <input type="text" class="form-control" id="productName" placeholder="product Name">
+        </div>
+        <!-- 2 -->
+        <div class="inputs-form my-2">
+            <label for="productPrice">productCategary :</label>
+            <input type="number" class="form-control" id="productPrice" placeholder="product Price">
+        </div>
+        <!-- 3 -->
+        <div class="inputs-form my-2">
+            <label for="productCategary">productName :</label>
+            <input type="text" class="form-control" id="productCategary" placeholder="product Categary">
+        </div>
+        <!-- 4 -->
+        <div class="inputs-form my-2">
+            <label for="productDescription">productDescription :</label>
+            <textarea class="form-control " id="productDescription" placeholder="product Description"></textarea>
+        </div>
+        <!-- END -->
+        <!-- =================== button ======================-->
+
+        <button class="btn btn-primary w-100" onclick="addProduct()">Add product</button>
+
+
+    </section>
+
+    <section class="bg-danger mt-3">
+        <table class="table m-auto">
+            <thead class="text-center">
+                <th>name</th>
+                <th>price</th>
+                <th>Categary</th>
+                <th>Description</th>
+                <th>Action</th> 
+            </thead>
+            <tbody id="tbodyData" class="text-center">
+             
+             
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<body>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/mean.js"></script>
+</body>
+
+</html>
