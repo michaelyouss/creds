@@ -3,9 +3,15 @@ var productNameInpot = document.getElementById("productName");
 var productPriceInpot = document.getElementById("productPrice");
 var CategaryInpot = document.getElementById("productCategary");
 var productDescriptionInpot = document.getElementById("productDescription");
+
 var search = document.getElementById("searchInpot")
+
+var buttonAdd = document.getElementById("add");
+var buttonUpdate = document.getElementById("update");
+
+var indexUbdate = 0 ;
 // 
-// ================================= creat
+// ================================= cruat
 // بستخدمها للتخذين من object ال array
 var prodeuctcontiner =[]
 
@@ -29,9 +35,15 @@ function addProduct(){
     localStorage.setItem("product", JSON.stringify(prodeuctcontiner))
     
     displayData()
+    form()
 }
 
-
+function form(){
+    productNameInpot.value = '';
+    productPriceInpot.value = '';
+    CategaryInpot.value = '';
+    productDescriptionInpot.value = '';
+}
 // ================================== displayData
 
 // يتم وضع جميع البيانات التي تم كتابتها هنا
@@ -45,7 +57,7 @@ function displayData(){
         <td>${prodeuctcontiner[i].categary}</td>
         <td>${prodeuctcontiner[i].description}</td>
             <td>
-            <button class="btn btn-outline-warning btn-sm" onclick="">Update</button>
+            <button class="btn btn-outline-warning btn-sm" onclick="updateData(${i})">Update</button>
             <button class="btn btn-outline-danger btn-sm mt-1 mt-lg-0"  onclick="deleteProduct(${i})" >Delete</button>
             </td>
     </tr>`
@@ -53,7 +65,6 @@ function displayData(){
 // لاظهار الداتا التي تم جمعها
     document.getElementById("tbodyData").innerHTML = cartone;
 }
-
 // لحذف عنصر معين
 function deleteProduct(elementNumber )
 {
@@ -79,7 +90,7 @@ if( prodeuctcontiner[i].name.toLowerCase().includes(seaarch.toLowerCase())   ){
         <td>${prodeuctcontiner[i].categary}</td>
         <td>${prodeuctcontiner[i].description}</td>
             <td>
-            <button class="btn btn-outline-warning btn-sm" onclick="">Update</button>
+            <button class="btn btn-outline-warning btn-sm" onclick="updateData(${i})">Update</button>
             <button class="btn btn-outline-danger btn-sm mt-1 mt-lg-0"  onclick="deleteProduct(${i})" >Delete</button>
             </td>
     </tr>`
@@ -90,11 +101,42 @@ if( prodeuctcontiner[i].name.toLowerCase().includes(seaarch.toLowerCase())   ){
     document.getElementById("tbodyData").innerHTML = cartone;
 
 }
+function updateData(index){
 
-    var seaarch = search.value;
- // المكان الموجود لجم البيانات بداخله
+indexUbdate =index
+
+var message = prodeuctcontiner[index];
+
+productNameInpot.value = message.name;
+productPriceInpot.value =message.price;
+CategaryInpot.value =message.categary;
+productDescriptionInpot.value =message.description;
+
+buttonUpdate.classList.remove("d-none");
+buttonAdd.classList.add("d-none");
 
 
+}
+
+function updateproduct(){
+    var product = {
+        name : productNameInpot.value,
+        price : productPriceInpot.value,
+        categary : CategaryInpot.value,
+        description : productDescriptionInpot.value
+    }
+
+    buttonAdd.classList.remove("d-none");
+    buttonUpdate.classList.add("d-none");
+    // لاضافه العنصر في البدايه
+    prodeuctcontiner.splice (indexUbdate,1 , product)
+// لا اضافه العنصر والحفاظ علي وجوده
+    localStorage.setItem("product", JSON.stringify(prodeuctcontiner))
+
+    displayData()
+    form()
+    
+}
 
 
 
