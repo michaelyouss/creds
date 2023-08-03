@@ -1,7 +1,9 @@
 
 var productNameInpot = document.getElementById("productName");
+var textProduct =document.getElementById("textProduct")
 var productPriceInpot = document.getElementById("productPrice");
 var CategaryInpot = document.getElementById("productCategary");
+var textCategary =document.getElementById("textCategary")
 var productDescriptionInpot = document.getElementById("productDescription");
 
 var search = document.getElementById("searchInpot")
@@ -20,10 +22,47 @@ if(localStorage.getItem("product") != null ){
     displayData()
 }
 
+function regex(){
+    var text =productNameInpot.value;
+    var x = /^[A-z]{2,20}$/
+ 
+    if(x.test(text) == true){
+        productNameInpot.classList.add("is-valid");
+        productNameInpot.classList.remove("is-invalid");
+        textProduct.classList.add("d-none");
+            return true
+    }else{
+        productNameInpot.classList.add("is-invalid")
+        productNameInpot.classList.remove("is-valid");
+        textProduct.classList.remove("d-none");
+            return false
+    }
+   
+}
+
+function Categary(){
+    var a =CategaryInpot.value;
+  var r =/^[A-z]{2,30}$/
+  if(r.test(a) == true){
+    CategaryInpot.classList.add("is-valid")
+    CategaryInpot.classList.remove("is-invalid")
+    textCategary.classList.add("d-none")
+    return true
+  }else{
+    CategaryInpot.classList.add("is-invalid")
+    CategaryInpot.classList.remove("is-valid")
+    textCategary.classList.remove("d-none")
+    return false
+  }
+}
 
 // ل اخذ قيم تم اضافتها 
 function addProduct(){
-    var product = {
+
+
+if(regex() == true){
+    if(Categary() == true){
+        var product = {
         name : productNameInpot.value,
         price : productPriceInpot.value,
         categary : CategaryInpot.value,
@@ -36,7 +75,17 @@ function addProduct(){
     
     displayData()
     form()
+    }else{
+        alert("يجب اضافه نوع المنتج")
+    }
+    }else{
+    alert("يجب اضافه اسم المنتج  ")
+        }
 }
+
+
+
+
 
 function form(){
     productNameInpot.value = '';

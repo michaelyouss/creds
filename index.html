@@ -19,17 +19,20 @@
         <!-- 1 -->
         <div class="inputs-form my-2">
             <label for="productName">productName :</label>
-            <input type="text" class="form-control" id="productName" placeholder="product Name">
+            <input oninput="regex()" type="text" class="form-control" id="productName" placeholder="product Name">
+            <p id="textProduct" class="bg-danger form-control w-25 text-center d-none">( a - z ==> 2-20)</p>
         </div>
         <!-- 2 -->
         <div class="inputs-form my-2">
             <label for="productPrice">productCategary :</label>
             <input type="number" class="form-control" id="productPrice" placeholder="product Price">
+        
         </div>
         <!-- 3 -->
         <div class="inputs-form my-2">
             <label for="productCategary">productName :</label>
-            <input type="text" class="form-control" id="productCategary" placeholder="product Categary">
+            <input oninput="Categary()" type="text" class="form-control" id="productCategary" placeholder="product Categary">
+            <p id="textCategary" class="bg-danger form-control w-25 text-center d-none">( a - z ==> 1-30 )</p>
         </div>
         <!-- 4 -->
         <div class="inputs-form my-2">
